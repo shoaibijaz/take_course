@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.utils.translation import ugettext as _
 
 class Category(models.Model):
 
@@ -15,6 +16,8 @@ class Category(models.Model):
     parent = models.ForeignKey('self', null=True, related_name='parent_category', on_delete=models.DO_NOTHING)
     
     class Meta:
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
         db_table = "app_categories"
 
     def __str__(self):
